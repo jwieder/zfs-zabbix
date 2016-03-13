@@ -100,47 +100,35 @@ zpool_get_poolname(__attribute__((__unused__))zpool_handle_t * zhp) {
 
 float
 zfs_get_compressratio(zfs_handle_t * zhf) {
-	char compressratio_str[32];
 	float compressratio = 0;
 
 	zfs_prop_get(zhf, ZFS_PROP_COMPRESSRATIO, compressratio_str, sizeof(compressratio_str), NULL, NULL, 0, false);
-	compressratio = atof(compressratio_str);
-
-	return compressratio;
+	return atof(compressratio_str);
 }
 
 long long unsigned int
 zfs_get_used(zfs_handle_t * zhf) {
-	long long unsigned int zfs_used = 0;
 	char zfs_used_str[256];
 
 	
 	zfs_prop_get(zhf, ZFS_PROP_USED, zfs_used_str, sizeof(zfs_used_str), NULL, NULL, 0, true);
-	zfs_used = atoll(zfs_used_str);
-
-	return zfs_used;
+	return atoll(zfs_used_str);
 }
 
 long long unsigned int
 zfs_get_available(zfs_handle_t * zhf) {
-	long long unsigned int zfs_available = 0;
 	char zfs_available_str[256];
 
 	zfs_prop_get(zhf, ZFS_PROP_AVAILABLE, zfs_available_str, sizeof(zfs_available_str), NULL, NULL, 0, true);
-	zfs_available = atoll(zfs_available_str);
-	
-	return zfs_available;
+	return atoll(zfs_available_str);
 }
 
 long long unsigned int
 zfs_get_logical(zfs_handle_t * zhf) {
-	long long unsigned int zfs_logical = 0;
 	char zfs_logical_str[256];
 
 	zfs_prop_get(zhf, ZFS_PROP_LOGICALUSED, zfs_logical_str, sizeof(zfs_logical_str), NULL, NULL, 0, true);
-	zfs_logical = atoll(zfs_logical_str);	
-
-	return zfs_logical;
+    return atoll(zfs_logical_str);
 }
 
 const char * 
