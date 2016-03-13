@@ -1,5 +1,5 @@
-SRCS=           zio.c config.c fsutil.c stdprint.c vdev_status.c memlist.c dedup_stats.c
-OBJ=            config.o fsutil.o stdprint.o vdev_status.o zio.o memlist.o dedup_stats.o
+SRCS=           zio.c config.c fsutil.c stdprint.c vdev_status.c memlist.c dedup_stats.c snapshot.c
+OBJ=            config.o fsutil.o stdprint.o vdev_status.o zio.o memlist.o dedup_stats.o snapshot.o
 PROG=           zio
 ARCH=           amd64
 PKGFILE=        $(PROG)-$(ARCH).pkg

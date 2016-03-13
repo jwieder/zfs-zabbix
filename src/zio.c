@@ -14,6 +14,7 @@
 #include "zio.h"
 #include "memlist.h"
 #include "dedup_stats.h"
+#include "snapshot.h"
 
 /*
  * NOTE: libzfs is an unstable interface. 
@@ -75,6 +76,8 @@ zfs_get_stats(zfs_handle_t * zhf, void * data) {
 		cnf->zfs.name = zfs_get_fsname(zhf);
 	}
 
+    zfs_iter_snapshots(zhf, true, zfs_get_snapshot, NULL);
+
 	zfs_close(zhf);
 	return 0;
 }
@@ -107,6 +110,7 @@ main(int argc, char *argv[]) {
 	zpool_iter(g_zfs, zpool_get_stats, (void *)&cnf);
 	zfs_iter_root(g_zfs, zfs_get_stats, (void *)&cnf);
 	zpool_iter(g_zfs, zpool_print_vdev, (void *)&zstat);
+
 
 
 	if (cnf.sw == SW_UNDEF) {
